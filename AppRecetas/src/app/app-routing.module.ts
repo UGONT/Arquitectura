@@ -27,7 +27,8 @@ const routes: Routes = [
   },
   {
     path: 'crear-receta',
-    loadChildren: () => import('./pages/crear-receta/crear-receta.module').then( m => m.CrearRecetaPageModule)
+    loadChildren: () => import('./pages/crear-receta/crear-receta.module').then( m => m.CrearRecetaPageModule),
+    canActivate: [AuthGuard]
   },
 ];
 
