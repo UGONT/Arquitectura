@@ -1,13 +1,22 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>recipe-list</ion-title>
+    <ion-title>Lista de Recetas</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">recipe-list</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <ion-list>
+    <ion-card *ngFor="let receta of recetas">
+      <ion-card-header>
+        <ion-card-title>{{ receta.nombre }}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p><strong>Descripción:</strong> {{ receta.descripcion }}</p>
+        <p><strong>Dificultad:</strong> {{ receta.dificultad }}</p>
+        <p><strong>Tiempo de Preparación:</strong> {{ receta.tiempoPreparacion }} minutos</p>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+  <ion-button expand="full" routerLink="/crear-receta">Agregar receta</ion-button>
+  <ion-button expand="full" (click)="logoutUser()">Cerrar sesion</ion-button>
 </ion-content>

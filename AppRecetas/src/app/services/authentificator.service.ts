@@ -1,7 +1,11 @@
 import { Injectable } from '@angular/core';
 import * as AmazonCognitoIdentity from 'amazon-cognito-identity-js';
 import userPool from '../../cognito-config';
-
+import {
+  CognitoUser,
+  AuthenticationDetails,
+  CognitoUserPool,
+} from 'amazon-cognito-identity-js';
 
 
 @Injectable({
@@ -13,8 +17,8 @@ export class AuthentificatorService {
 
   constructor() {
     const poolData = {
-      UserPoolId: 'us-east-1_WYl5dOv4G',    // Reemplaza con tu User Pool ID
-      ClientId: 'tcqi4ggelumhubpe0stf24s2a'    // Reemplaza con tu App Client ID
+      UserPoolId: 'us-east-1_WYl5dOv4G',    
+      ClientId: 'tcqi4ggelumhubpe0stf24s2a' 
     };
 
     this.userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
@@ -29,7 +33,7 @@ export class AuthentificatorService {
         
       }),
       new AmazonCognitoIdentity.CognitoUserAttribute({
-        Name: 'nickname', // Atributo 'nickname' requerido
+        Name: 'nickname', 
         Value: nickname,
       }),
     ];
@@ -45,23 +49,37 @@ export class AuthentificatorService {
     });
   }
 
-  // Iniciar sesión
-  signIn(username: string, password: string): Promise<any> {
-    const userData = {
-      Username: username,
-      Pool: this.userPool,
-    };
-
-    const cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
-    const authenticationDetails = new AmazonCognitoIdentity.AuthenticationDetails({
-      Username: username,
-      Password: password,
-    });
-
+  // Iniciar sesiin
+  loginUser(email: string, password: string): Promise<void> {
     return new Promise((resolve, reject) => {
-      cognitoUser.authenticateUser(authenticationDetails, {
-        onSuccess: (result) => resolve(result),
-        onFailure: (err) => reject(err),
+      const authDetails = new AuthenticationDetails({
+        Username: email,
+        Password: password,
+      });
+
+      const cognitoUser = new CognitoUser({
+        Username: email,
+        Pool: this.userPool,
+      });
+
+      cognitoUser.authenticateUser(authDetails, {
+        onSuccess: (result) => {
+          const idToken = result.getIdToken().getJwtToken();
+          const accessToken = result.getAccessToken().getJwtToken();
+          const refreshToken = result.getRefreshToken().getToken();
+
+          // Almacena los tokens en el almacenamiento local
+          localStorage.setItem('idToken', idToken);
+          localStorage.setItem('accessToken', accessToken);
+          localStorage.setItem('refreshToken', refreshToken);
+
+          console.log('Inicio de sesión exitoso');
+          resolve();
+        },
+        onFailure: (err) => {
+          console.error('Error de inicio de sesión:', err);
+          reject(err);
+        },
       });
     });
   }
@@ -91,10 +109,26 @@ export class AuthentificatorService {
 
   // Cerrar sesión
   signOut() {
-    const cognitoUser = this.getCurrentUser();
-    if (cognitoUser) {
-      cognitoUser.signOut();
+    try {
+      localStorage.removeItem('idToken'); // Limpia los tokens del almacenamiento local
+      localStorage.removeItem('accessToken');
+      localStorage.removeItem('refreshToken');
+  
+      const cognitoUser = this.getCurrentUser();
+      if (cognitoUser) {
+        cognitoUser.signOut(); // Cierra la sesión en Cognito
+      }
+  
+      console.log('Sesión cerrada correctamente');
+    } catch (error) {
+      console.error('Error al cerrar sesión:', error);
     }
+  }
+  
+
+  logoutUser() {
+    localStorage.clear(); // Limpia los tokens del almacenamiento
+    console.log('Sesión cerrada');
   }
 
 

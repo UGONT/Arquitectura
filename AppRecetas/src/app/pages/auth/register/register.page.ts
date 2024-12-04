@@ -57,6 +57,7 @@ export class RegisterPage implements OnInit {
       this.auth.signUp(this.username, this.password, this.email)
       .then((result) => {
         console.log('Registration success:', result);
+        this.router.navigate(["/login"])
       })
       .catch((err) => {
         console.error('Registration error:', err);
@@ -71,7 +72,7 @@ export class RegisterPage implements OnInit {
   } 
 
   onBack() {
-    this.router.navigate(['/home']); // Navegar a la página de inicio
+    this.router.navigate(['/home']); 
   }
 
   ngOnInit() {

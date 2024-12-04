@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Crear Receta</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="container">
+    <form [formGroup]="recipeForm" (ngSubmit)="crearReceta()">
+      <ion-item>
+        <ion-label position="stacked">Nombre</ion-label>
+        <ion-input formControlName="nombre" placeholder="Nombre de la receta"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Descripción</ion-label>
+        <ion-textarea
+          formControlName="descripcion"
+          placeholder="Describe la receta"
+        ></ion-textarea>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Dificultad</ion-label>
+        <ion-select formControlName="dificultad" placeholder="Selecciona una dificultad">
+          <ion-select-option value="Fácil">Fácil</ion-select-option>
+          <ion-select-option value="Intermedio">Intermedio</ion-select-option>
+          <ion-select-option value="Difícil">Difícil</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Tiempo de Preparación (minutos)</ion-label>
+        <ion-input
+          formControlName="tiempoPreparacion"
+          type="number"
+          placeholder="Tiempo en minutos"
+        ></ion-input>
+      </ion-item>
+
+      <ion-button expand="block" type="submit" [disabled]="!recipeForm.valid">
+        Guardar Receta
+      </ion-button>
+    </form>
+    <ion-button expand="full" routerLink="/recipe-list">Volver</ion-button>
+  </div>
+</ion-content>

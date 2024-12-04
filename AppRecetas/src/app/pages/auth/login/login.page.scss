@@ -1,0 +1,28 @@
+.login-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 400px; /* Limita el ancho */
+    margin: 0 auto; /* Centra el contenedor */
+    padding: 20px; /* Espaciado interno */
+    background-color:#676767;
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  
+    ion-item {
+      width: 100%; /* Asegura que los campos ocupen todo el ancho */
+      margin-bottom: 15px; /* Espacio entre los campos */
+    }
+  
+    ion-button {
+      width: 100%; /* Botón de ancho completo */
+      margin-top: 10px; /* Espacio sobre el botón */
+    }
+  
+    ion-text {
+      margin-top: 10px; /* Espacio sobre el texto de error */
+      text-align: center;
+    }
+  }
+  
