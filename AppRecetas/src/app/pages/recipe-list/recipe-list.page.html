@@ -11,12 +11,15 @@
         <ion-card-title>{{ receta.nombre }}</ion-card-title>
       </ion-card-header>
       <ion-card-content>
+        <p><strong>Id:</strong> {{ receta.id }}</p>
         <p><strong>Descripción:</strong> {{ receta.descripcion }}</p>
         <p><strong>Dificultad:</strong> {{ receta.dificultad }}</p>
         <p><strong>Tiempo de Preparación:</strong> {{ receta.tiempoPreparacion }} minutos</p>
       </ion-card-content>
     </ion-card>
   </ion-list>
-  <ion-button expand="full" routerLink="/crear-receta">Agregar receta</ion-button>
+  <ion-button expand="full" color="success" routerLink="/crear-receta">Agregar receta</ion-button>
+  <ion-button expand="full" color="warning" routerLink="/update-recipe">Modificar receta</ion-button>
+  <ion-button expand="full" color="danger" routerLink="/delete-recipe">Eliminar receta</ion-button>
   <ion-button expand="full" (click)="logoutUser()">Cerrar sesion</ion-button>
 </ion-content>

@@ -55,4 +55,24 @@ export class ApiControllerService {
       })
     );
   }
+
+  updateReceta(recetaData: any): Observable<any> {
+    return this.http.put(`${this.apiURL}update_recipe`, recetaData).pipe(
+      catchError((error) => {
+        console.error('Error al modificar receta:', error);
+        alert('Hubo un error al modificar la receta. Por favor, inténtalo de nuevo.');
+        return throwError(() => new Error(`Error al modificar receta: ${error.message}`));
+      })
+    );
+  }
+
+  deleteReceta(recetaData: any): Observable<any> {
+    return this.http.delete(`${this.apiURL}delete_recipe`, recetaData).pipe(
+      catchError((error) => {
+        console.error('Error al eliminar receta:', error);
+        alert('Hubo un error al eliminar la receta. Por favor, inténtalo de nuevo.');
+        return throwError(() => new Error(`Error al eliminar receta: ${error.message}`));
+      })
+    );
+  }
 }

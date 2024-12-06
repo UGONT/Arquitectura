@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Borrar Receta</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="container">
+    <form [formGroup]="recipeForm" (ngSubmit)="borrarReceta()">
+      <ion-item>
+        <ion-label position="stacked">ID: </ion-label>
+        <ion-input formControlName="id" placeholder="Id de la receta"></ion-input>
+      </ion-item>
+
+      <ion-button expand="block" type="submit" [disabled]="!recipeForm.valid">
+        Eliminar Receta
+      </ion-button>
+      <ion-button expand="full" routerLink="/recipe-list">Volver</ion-button>
+    </form>
+
+  </div>
+</ion-content>

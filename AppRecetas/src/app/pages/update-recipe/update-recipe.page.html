@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Modificar Receta</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12">
+        <form [formGroup]="formularioReceta" (ngSubmit)="modificarReceta()">
+          <ion-item>
+            <ion-label position="floating">ID de la Receta</ion-label>
+            <ion-input formControlName="id" type="number" placeholder="Ingrese el ID"></ion-input>
+          </ion-item>
+          <ion-text color="danger" *ngIf="formularioReceta.get('id')?.invalid && formularioReceta.get('id')?.touched">
+            El ID es obligatorio.
+          </ion-text>
+
+          <ion-item>
+            <ion-label position="floating">Nombre</ion-label>
+            <ion-input formControlName="nombre" type="text" placeholder="Ingrese el nombre"></ion-input>
+          </ion-item>
+          <ion-text color="danger" *ngIf="formularioReceta.get('nombre')?.invalid && formularioReceta.get('nombre')?.touched">
+            El nombre es obligatorio.
+          </ion-text>
+
+          <ion-item>
+            <ion-label position="floating">Descripción</ion-label>
+            <ion-textarea formControlName="descripcion" placeholder="Ingrese la descripción"></ion-textarea>
+          </ion-item>
+          <ion-text color="danger" *ngIf="formularioReceta.get('descripcion')?.invalid && formularioReceta.get('descripcion')?.touched">
+            La descripción es obligatoria.
+          </ion-text>
+
+          <ion-item>
+            <ion-label position="floating">Dificultad</ion-label>
+            <ion-select formControlName="dificultad" placeholder="Seleccione una dificultad">
+              <ion-select-option value="Fácil">Fácil</ion-select-option>
+              <ion-select-option value="Intermedia">Intermedia</ion-select-option>
+              <ion-select-option value="Difícil">Difícil</ion-select-option>
+            </ion-select>
+          </ion-item>
+          <ion-text color="danger" *ngIf="formularioReceta.get('dificultad')?.invalid && formularioReceta.get('dificultad')?.touched">
+            La dificultad es obligatoria.
+          </ion-text>
+
+          <ion-item>
+            <ion-label position="floating">Tiempo de Preparación (min)</ion-label>
+            <ion-input formControlName="tiempoPreparacion" type="number" placeholder="Ingrese el tiempo"></ion-input>
+          </ion-item>
+          <ion-text color="danger" *ngIf="formularioReceta.get('tiempoPreparacion')?.invalid && formularioReceta.get('tiempoPreparacion')?.touched">
+            El tiempo es obligatorio.
+          </ion-text>
+
+          <ion-button expand="block" type="submit" [disabled]="formularioReceta.invalid">Modificar Receta</ion-button>
+          <ion-button expand="block" routerLink="/recipe-list" >Volver</ion-button>
+        </form>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

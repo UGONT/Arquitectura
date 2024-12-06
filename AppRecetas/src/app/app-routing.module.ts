@@ -34,6 +34,14 @@ const routes: Routes = [
     path: 'verify',
     loadChildren: () => import('./pages/auth/verify/verify.module').then( m => m.VerifyPageModule)
   },
+  {
+    path: 'update-recipe',
+    loadChildren: () => import('./pages/update-recipe/update-recipe.module').then( m => m.UpdateRecipePageModule)
+  },
+  {
+    path: 'delete-recipe',
+    loadChildren: () => import('./pages/delete-recipe/delete-recipe.module').then( m => m.DeleteRecipePageModule)
+  },
 ];
 
 @NgModule({
