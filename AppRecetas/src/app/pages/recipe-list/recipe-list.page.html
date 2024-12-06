@@ -5,6 +5,10 @@
 </ion-header>
 
 <ion-content>
+  <ion-button expand="block" (click)="recargarRecetas()">
+    Refrescar recetas
+  </ion-button>
+  <ion-spinner *ngIf="recetas.length === 0"></ion-spinner>
   <ion-list>
     <ion-card *ngFor="let receta of recetas">
       <ion-card-header>

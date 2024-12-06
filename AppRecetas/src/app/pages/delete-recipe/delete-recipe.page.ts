@@ -21,7 +21,7 @@ export class DeleteRecipePage implements OnInit {
     private router: Router
   ) {
     this.recipeForm = this.fb.group({
-      id: ['', [Validators.required]],  
+      id: ['', [Validators.required]],
     });
    }
 
@@ -32,9 +32,9 @@ export class DeleteRecipePage implements OnInit {
     if (this.recipeForm.valid) {
 
       this.receta = {
-        id:this.recipeForm.value.id,
+        id:this.recipeForm.value.id
       }
-
+      console.log("el json es: ",this.receta)
       this.api.deleteReceta(this.receta).subscribe(
         (response) => {
           console.log('Receta eliminada:', response);

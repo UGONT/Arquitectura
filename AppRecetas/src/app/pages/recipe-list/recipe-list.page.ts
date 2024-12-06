@@ -42,4 +42,8 @@ export class RecipeListPage implements OnInit {
       
     }
   }
+
+  recargarRecetas() {
+    this.obtenerRecetas(); 
+  }
 }

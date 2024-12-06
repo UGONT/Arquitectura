@@ -44,7 +44,7 @@ export class CrearRecetaPage implements OnInit {
         tiempoPreparacion: this.recipeForm.value.tiempoPreparacion
       }
 
-      
+      console.log("la receta es: ",this.receta)
       this.api.postReceta(this.receta).subscribe(
         (response) => {
           console.log('Receta creada:', response);
