@@ -14,7 +14,15 @@ import { AuthentificatorService } from './services/authentificator.service';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
+  imports: [BrowserModule, IonicModule.forRoot(
+    {
+      rippleEffect: false,
+      mode: "md",
+      animated: true,
+      hardwareBackButton: true,
+      
+    }
+  ), AppRoutingModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },provideHttpClient(), AuthentificatorService],
   bootstrap: [AppComponent],
 })

@@ -1,24 +1,23 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Iniciar sesión</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
-  <div class="login-container">
-    <ion-item>
-      <ion-label position="floating">Correo electrónico</ion-label>
-      <ion-input type="email" [(ngModel)]="email"></ion-input>
-    </ion-item>
+  <div class="ion-padding register-container">
+    <form class="register-form" (ngSubmit)="login()">
+      <ion-item>
+        <ion-label position="stacked">Correo Electrónico</ion-label>
+        <ion-input type="email" [(ngModel)]="email" name="email" placeholder="Ingresa tu correo" required></ion-input>
+      </ion-item>
 
-    <ion-item>
-      <ion-label position="floating">Contraseña</ion-label>
-      <ion-input type="password" [(ngModel)]="password"></ion-input>
-    </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Contraseña</ion-label>
+        <ion-input type="password" [(ngModel)]="password" name="password" placeholder="Ingresa tu contraseña"
+          required></ion-input>
+      </ion-item>
 
-    <ion-button expand="full" (click)="login()">Iniciar sesión</ion-button>
-    <ion-button expand="full" (click)="onBack()">Volver</ion-button>
+      <div class="buttons">
+        <ion-button expand="block" color="primary" type="submit">Iniciar sesión</ion-button>
+        <ion-button expand="block" color="light" (click)="onBack()">Volver</ion-button>
+      </div>
 
-    <ion-text color="danger" *ngIf="errorMessage">{{ errorMessage }}</ion-text>
+      <ion-text color="danger" *ngIf="errorMessage">{{ errorMessage }}</ion-text>
+    </form>
   </div>
 </ion-content>

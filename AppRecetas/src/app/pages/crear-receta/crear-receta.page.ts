@@ -11,6 +11,7 @@ import { ApiControllerService } from 'src/app/services/api-controller.service';
 export class CrearRecetaPage implements OnInit {
 
   recipeForm: FormGroup;
+
   receta = {
     "nombre": "",
     "descripcion": "",
@@ -36,11 +37,18 @@ export class CrearRecetaPage implements OnInit {
   crearReceta() {
     if (this.recipeForm.valid) {
 
-      const nuevaReceta = this.recipeForm.value;
-      this.api.postReceta(nuevaReceta).subscribe(
+      this.receta = {
+        nombre: this.recipeForm.value.nombre,
+        descripcion: this.recipeForm.value.descripcion,
+        dificultad: this.recipeForm.value.dificultad,
+        tiempoPreparacion: this.recipeForm.value.tiempoPreparacion
+      }
+
+      
+      this.api.postReceta(this.receta).subscribe(
         (response) => {
           console.log('Receta creada:', response);
-          this.router.navigate(['/list-recipes']); // Redirige a la lista de recetas
+          this.router.navigate(['/recipe-list']); // Redirige a la lista de recetas
         },
         (error) => {
           console.error('Error al crear receta:', error);

@@ -1,30 +1,34 @@
-<ion-content class="ion-padding register-container">
-  <form class="register-form" [formGroup]="formularioRegistro" (ngSubmit)="onRegister()">
-    <ion-item>
-      <ion-label position="stacked">Usuario</ion-label>
-      <ion-input type="text" formControlName="usuario" placeholder="Ingresa tu usuario"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="stacked">Email</ion-label>
-      <ion-input type="email" formControlName="correo" placeholder="Ingresa tu email"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="stacked">Contraseña</ion-label>
-      <ion-input type="password" formControlName="password" placeholder="Ingresa tu contraseña">
-        <ion-input-password-toggle slot="end"></ion-input-password-toggle>
-      </ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="stacked">Repetir Contraseña</ion-label>
-      <ion-input type="password" formControlName="confirmacionPassword" placeholder="Repite tu contraseña">
-        <ion-input-password-toggle slot="end"></ion-input-password-toggle>
-      </ion-input>
-    </ion-item>
+<ion-content>
+  <div class="ion-padding register-container">
+    <form class="register-form" [formGroup]="formularioRegistro" (ngSubmit)="onRegister()">
+      <ion-item>
+        <ion-label position="stacked">Usuario</ion-label>
+        <ion-input type="text" formControlName="usuario" placeholder="Ingresa tu usuario"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Email</ion-label>
+        <ion-input type="email" formControlName="correo" placeholder="Ingresa tu email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Contraseña</ion-label>
+        <ion-input type="password" formControlName="password" placeholder="Ingresa tu contraseña">
+          <ion-input-password-toggle slot="end"></ion-input-password-toggle>
+        </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Repetir Contraseña</ion-label>
+        <ion-input type="password" formControlName="confirmacionPassword" placeholder="Repite tu contraseña">
+          <ion-input-password-toggle slot="end"></ion-input-password-toggle>
+        </ion-input>
+      </ion-item>
 
-    <div class="buttons">
-      <ion-button expand="block" color="primary" type="submit">Registrarse</ion-button>
-      <ion-button expand="block" color="light" routerLink="/home">Volver</ion-button>
-    </div>
-  </form>
+      <div class="buttons">
+        <ion-button expand="block" color="primary" type="submit">Registrarse</ion-button>
+        <ion-button expand="block" color="light" routerLink="/home">Volver</ion-button>
+      </div>
+      <div class="verify">
+        <a routerLink="/verify">Verificar usuario</a>
+      </div>
+    </form>
+  </div>
 </ion-content>
-

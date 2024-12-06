@@ -3,5 +3,11 @@
   "integrations": {
     "capacitor": {}
   },
-  "type": "angular"
+  "type": "angular",
+  "proxies": [
+    {
+      "path": "/api",
+      "proxyUrl": "https://e3rg1vlt91.execute-api.us-east-1.amazonaws.com/dev"
+    }
+  ]
 }

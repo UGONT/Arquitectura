@@ -1,0 +1,21 @@
+<ion-content >
+  <div class="ion-padding register-container">
+    <form class="register-form" (ngSubmit)="onConfirmSignUp()">
+      <ion-item>
+        <ion-label position="stacked">Usuario</ion-label>
+        <ion-input type="text" [(ngModel)]="username" name="username" placeholder="Ingresa tu usuario"
+          required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Código de Verificación</ion-label>
+        <ion-input type="text" [(ngModel)]="verificationCode" name="verificationCode"
+          placeholder="Ingresa el código de verificación" required></ion-input>
+      </ion-item>
+
+      <div class="buttons">
+        <ion-button expand="block" color="primary" type="submit">Verificar</ion-button>
+        <ion-button expand="block" color="light" routerLink="/home">Volver</ion-button>
+      </div>
+    </form>
+  </div>
+</ion-content>

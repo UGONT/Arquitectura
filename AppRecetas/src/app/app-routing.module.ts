@@ -30,6 +30,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/crear-receta/crear-receta.module').then( m => m.CrearRecetaPageModule),
     canActivate: [AuthGuard]
   },
+  {
+    path: 'verify',
+    loadChildren: () => import('./pages/auth/verify/verify.module').then( m => m.VerifyPageModule)
+  },
 ];
 
 @NgModule({

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthentificatorService } from 'src/app/services/authentificator.service';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-register',
@@ -16,10 +17,14 @@ export class RegisterPage implements OnInit {
   email: string = '';
   formularioRegistro: FormGroup;
 
+  user: string = '';
+  verificationCode: string = '';
+
   constructor(
     private router: Router,
     private fb: FormBuilder,
     private auth: AuthentificatorService,
+    private alertCtrl: AlertController
   ) {
 
     this.formularioRegistro = this.fb.group({
@@ -57,7 +62,7 @@ export class RegisterPage implements OnInit {
       this.auth.signUp(this.username, this.password, this.email)
       .then((result) => {
         console.log('Registration success:', result);
-        this.router.navigate(["/login"])
+        this.router.navigate(["/verify"])
       })
       .catch((err) => {
         console.error('Registration error:', err);
@@ -78,4 +83,6 @@ export class RegisterPage implements OnInit {
   ngOnInit() {
   }
 
+
+  
 }
