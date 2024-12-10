@@ -13,7 +13,8 @@ export class DeleteRecipePage implements OnInit {
   recipeForm: FormGroup;
 
   receta = {
-    "id": ""
+    "id": "",
+    "nombre": ""
   }
   constructor(
     private fb: FormBuilder,
@@ -31,11 +32,8 @@ export class DeleteRecipePage implements OnInit {
   borrarReceta() {
     if (this.recipeForm.valid) {
 
-      this.receta = {
-        id:this.recipeForm.value.id
-      }
-      console.log("el json es: ",this.receta)
-      this.api.deleteReceta(this.receta).subscribe(
+      
+      this.api.deleteReceta(this.recipeForm.value.id).subscribe(
         (response) => {
           console.log('Receta eliminada:', response);
           this.router.navigate(['/recipe-list']); // Redirige a la lista de recetas

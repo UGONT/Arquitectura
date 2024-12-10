@@ -66,8 +66,8 @@ export class ApiControllerService {
     );
   }
 
-  deleteReceta(recetaData: any): Observable<any> {
-    return this.http.delete(`${this.apiURL}delete_recipe`, recetaData).pipe(
+  deleteReceta(recetaId: number): Observable<any> {
+    return this.http.delete(`${this.apiURL}delete_recipe?id=${recetaId}`).pipe(
       catchError((error) => {
         console.error('Error al eliminar receta:', error);
         alert('Hubo un error al eliminar la receta. Por favor, inténtalo de nuevo.');
