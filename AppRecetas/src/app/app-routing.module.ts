@@ -36,11 +36,13 @@ const routes: Routes = [
   },
   {
     path: 'update-recipe',
-    loadChildren: () => import('./pages/update-recipe/update-recipe.module').then( m => m.UpdateRecipePageModule)
+    loadChildren: () => import('./pages/update-recipe/update-recipe.module').then( m => m.UpdateRecipePageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'delete-recipe',
-    loadChildren: () => import('./pages/delete-recipe/delete-recipe.module').then( m => m.DeleteRecipePageModule)
+    loadChildren: () => import('./pages/delete-recipe/delete-recipe.module').then( m => m.DeleteRecipePageModule),
+    canActivate: [AuthGuard]
   },
 ];
 
