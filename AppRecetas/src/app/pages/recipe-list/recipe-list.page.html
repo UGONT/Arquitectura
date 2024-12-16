@@ -1,16 +1,18 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Lista de Recetas</ion-title>
-  </ion-toolbar>
-</ion-header>
+
 
 <ion-content>
-  <ion-button expand="block" (click)="recargarRecetas()">
-    Refrescar recetas
+  <!-- Botón de recarga -->
+  <ion-button expand="block" color="tertiary" (click)="recargarRecetas()">
+    <ion-icon name="refresh" slot="start"></ion-icon>
+    Refrescar Recetas
   </ion-button>
-  <ion-spinner *ngIf="recetas.length === 0"></ion-spinner>
+
+  <!-- Spinner para cuando no hay recetas -->
+  <ion-spinner *ngIf="recetas.length === 0" color="primary"></ion-spinner>
+
+  <!-- Lista de recetas -->
   <ion-list>
-    <ion-card *ngFor="let receta of recetas">
+    <ion-card *ngFor="let receta of recetas" class="recipe-card">
       <ion-card-header>
         <ion-card-title>{{ receta.nombre }}</ion-card-title>
       </ion-card-header>
@@ -22,8 +24,20 @@
       </ion-card-content>
     </ion-card>
   </ion-list>
-  <ion-button expand="full" color="success" routerLink="/crear-receta">Agregar receta</ion-button>
-  <ion-button expand="full" color="warning" routerLink="/update-recipe">Modificar receta</ion-button>
-  <ion-button expand="full" color="danger" routerLink="/delete-recipe">Eliminar receta</ion-button>
-  <ion-button expand="full" (click)="logoutUser()">Cerrar sesion</ion-button>
+
+  <!-- Botones de acciones -->
+  <div class="action-buttons">
+    <ion-button expand="full" color="success" routerLink="/crear-receta">
+      <ion-icon name="add" slot="start"></ion-icon> Agregar receta
+    </ion-button>
+    <ion-button expand="full" color="warning" routerLink="/update-recipe">
+      <ion-icon name="create" slot="start"></ion-icon> Modificar receta
+    </ion-button>
+    <ion-button expand="full" color="danger" routerLink="/delete-recipe">
+      <ion-icon name="trash" slot="start"></ion-icon> Eliminar receta
+    </ion-button>
+    <ion-button expand="full" color="medium" (click)="logoutUser()">
+      <ion-icon name="log-out" slot="start"></ion-icon> Cerrar sesión
+    </ion-button>
+  </div>
 </ion-content>
