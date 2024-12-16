@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthentificatorService } from 'src/app/services/authentificator.service';
-import { AlertController } from '@ionic/angular';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-register',
@@ -24,7 +24,7 @@ export class RegisterPage implements OnInit {
     private router: Router,
     private fb: FormBuilder,
     private auth: AuthentificatorService,
-    private alertCtrl: AlertController
+    private toastController: ToastController
   ) {
 
     this.formularioRegistro = this.fb.group({
@@ -60,21 +60,36 @@ export class RegisterPage implements OnInit {
       this.password = this.formularioRegistro.value.password
 
       this.auth.signUp(this.username, this.password, this.email)
-      .then((result) => {
+      .then(async (result) => {
         console.log('Registration success:', result);
-        this.router.navigate(["/verify"])
+
+        // Mostrar toast de registro exitoso
+        await this.presentToast('Registro exitoso, por favor confirma tu cuenta', 'success');
+
+        this.router.navigate(["/verify"]);
       })
       .catch((err) => {
         console.error('Registration error:', err);
+
+        // Mostrar toast de error en caso de fallo
+        this.presentToast('Ocurrió un error al registrar el usuario', 'danger');
       });
 
+    } else {
+      console.log("Formulario incompleto");
     }
-    else {
-      /* MAL */
-      console.log("Formulario incompleto")
-    }
-
   } 
+
+  // Método para mostrar el toast
+  async presentToast(message: string, color: string) {
+    const toast = await this.toastController.create({
+      message,
+      duration: 3000, // Duración en milisegundos
+      color,
+      position: 'top', // Posición del toast
+    });
+    await toast.present();
+  }
 
   onBack() {
     this.router.navigate(['/home']); 
@@ -82,7 +97,4 @@ export class RegisterPage implements OnInit {
 
   ngOnInit() {
   }
-
-
-  
 }

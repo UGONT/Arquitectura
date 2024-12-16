@@ -10,7 +10,7 @@
       <ion-col size="12">
         <form [formGroup]="formularioReceta" (ngSubmit)="modificarReceta()">
           <ion-item>
-            <ion-label position="floating">ID de la Receta</ion-label>
+            <ion-label position="stacked">ID de la Receta</ion-label>
             <ion-input formControlName="id" type="number" placeholder="Ingrese el ID"></ion-input>
           </ion-item>
           <ion-text color="danger" *ngIf="formularioReceta.get('id')?.invalid && formularioReceta.get('id')?.touched">
@@ -18,7 +18,7 @@
           </ion-text>
 
           <ion-item>
-            <ion-label position="floating">Nombre</ion-label>
+            <ion-label position="stacked">Nombre</ion-label>
             <ion-input formControlName="nombre" type="text" placeholder="Ingrese el nombre"></ion-input>
           </ion-item>
           <ion-text color="danger" *ngIf="formularioReceta.get('nombre')?.invalid && formularioReceta.get('nombre')?.touched">
@@ -26,7 +26,7 @@
           </ion-text>
 
           <ion-item>
-            <ion-label position="floating">Descripción</ion-label>
+            <ion-label position="stacked">Descripción</ion-label>
             <ion-textarea formControlName="descripcion" placeholder="Ingrese la descripción"></ion-textarea>
           </ion-item>
           <ion-text color="danger" *ngIf="formularioReceta.get('descripcion')?.invalid && formularioReceta.get('descripcion')?.touched">
@@ -34,7 +34,7 @@
           </ion-text>
 
           <ion-item>
-            <ion-label position="floating">Dificultad</ion-label>
+            <ion-label position="stacked">Dificultad</ion-label>
             <ion-select formControlName="dificultad" placeholder="Seleccione una dificultad">
               <ion-select-option value="Fácil">Fácil</ion-select-option>
               <ion-select-option value="Intermedia">Intermedia</ion-select-option>
@@ -46,7 +46,7 @@
           </ion-text>
 
           <ion-item>
-            <ion-label position="floating">Tiempo de Preparación (min)</ion-label>
+            <ion-label position="stacked">Tiempo de Preparación (min)</ion-label>
             <ion-input formControlName="tiempoPreparacion" type="number" placeholder="Ingrese el tiempo"></ion-input>
           </ion-item>
           <ion-text color="danger" *ngIf="formularioReceta.get('tiempoPreparacion')?.invalid && formularioReceta.get('tiempoPreparacion')?.touched">

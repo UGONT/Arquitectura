@@ -1,27 +1,50 @@
+/* Contenedor */
 #container {
   text-align: center;
-
   position: absolute;
   left: 0;
   right: 0;
   top: 50%;
   transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.6); /* Fondo blanco translúcido */
+  backdrop-filter: blur(10px); /* Efecto difuminado detrás del contenedor */
+  padding: 30px; /* Espaciado interno */
+  border-radius: 20px; /* Bordes redondeados */
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Sombra moderna */
+  max-width: 90%; /* Ancho máximo para pantallas pequeñas */
+  margin: 0 auto; /* Centrado horizontal */
 }
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
+/* Eliminar el fondo y bordes de ion-card y ion-card-content */
+ion-card, 
+ion-card-content {
+  background: transparent !important; /* Fondo transparente */
+  box-shadow: none !important; /* Sin sombra */
+  border: none !important; /* Sin borde */
+  padding: 0; /* Ajustar espaciado */
 }
 
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
+/* Botones */
+#container ion-button {
+  width: 220px; /* Ancho consistente */
+  height: 50px; /* Altura fija */
+  margin: 15px auto; /* Espaciado entre botones */
+  font-size: 18px; /* Tamaño de texto */
+  font-weight: bold; /* Resaltar texto */
+  color: white; /* Texto blanco */
+  background: linear-gradient(45deg, #ff6f61, #ff9068); /* Degradado atractivo */
+  border-radius: 25px; /* Bordes redondeados */
+  box-shadow: 0 4px 10px rgba(255, 111, 97, 0.3); /* Sombra ligera */
+  transition: transform 0.2s, box-shadow 0.2s; /* Transición suave */
 }
 
-#container a {
-  text-decoration: none;
+/* Efecto hover para botones */
+#container ion-button:hover {
+  transform: translateY(-3px); /* Botón se eleva */
+  box-shadow: 0 8px 15px rgba(255, 111, 97, 0.5); /* Sombra más intensa */
+}
+
+/* Fondo general */
+ion-content {
+  --background: url('../../../assets/img/Fondo-Principal.png') no-repeat center center / cover;
 }

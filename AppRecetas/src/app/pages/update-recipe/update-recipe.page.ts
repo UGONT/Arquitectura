@@ -19,7 +19,7 @@ export class UpdateRecipePage implements OnInit {
     "descripcion": "",
     "dificultad": "",
     "tiempoPreparacion": ""
-  }
+  };
 
   constructor(
     private formBuilder: FormBuilder,
@@ -36,40 +36,48 @@ export class UpdateRecipePage implements OnInit {
     });
   }
 
-  ngOnInit() {
-  }
-
-  modificarReceta() {
-    if (this.formularioReceta.valid) {
-
-      this.receta = {
-        id:this.formularioReceta.value.id,
-        nombre: this.formularioReceta.value.nombre,
-        descripcion: this.formularioReceta.value.descripcion,
-        dificultad: this.formularioReceta.value.dificultad,
-        tiempoPreparacion: this.formularioReceta.value.tiempoPreparacion
-      }
-
-      
-      this.api.updateReceta(this.receta).subscribe(
-        (response) => {
-          console.log('Receta creada:', response);
-          this.router.navigate(['/recipe-list']); // Redirige a la lista de recetas
-        },
-        (error) => {
-          console.error('Error al crear receta:', error);
-        }
-      );
-    }
-  }
+  ngOnInit() {}
 
   async presentToast(message: string, color: string) {
     const toast = await this.toastController.create({
       message,
-      duration: 2000,
+      duration: 3000, // Duración en milisegundos
       color,
+      position: 'top', // Posición del toast
     });
     await toast.present();
   }
 
+  modificarReceta() {
+    if (this.formularioReceta.valid) {
+      this.receta = {
+        id: this.formularioReceta.value.id,
+        nombre: this.formularioReceta.value.nombre,
+        descripcion: this.formularioReceta.value.descripcion,
+        dificultad: this.formularioReceta.value.dificultad,
+        tiempoPreparacion: this.formularioReceta.value.tiempoPreparacion
+      };
+
+      this.api.updateReceta(this.receta).subscribe(
+        (response) => {
+          console.log('Receta actualizada:', response);
+
+          // Mostrar popup de éxito
+          this.presentToast('¡Receta actualizada exitosamente!', 'success');
+
+          // Redirigir a la lista de recetas
+          this.router.navigate(['/recipe-list']);
+        },
+        (error) => {
+          console.error('Error al actualizar receta:', error);
+
+          // Mostrar popup de error
+          this.presentToast('Error al actualizar la receta. Inténtalo nuevamente.', 'danger');
+        }
+      );
+    } else {
+      // Validar si el formulario no es válido
+      this.presentToast('Por favor, completa todos los campos correctamente.', 'warning');
+    }
+  }
 }

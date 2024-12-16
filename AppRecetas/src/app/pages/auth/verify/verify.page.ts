@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AlertController } from '@ionic/angular';
+import { ToastController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { AuthentificatorService } from 'src/app/services/authentificator.service';
 
@@ -15,33 +15,37 @@ export class VerifyPage implements OnInit {
 
   constructor(
     private auth: AuthentificatorService,
-    private alertCtrl: AlertController,
-    private router : Router
+    private toastController: ToastController,
+    private router: Router
   ) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   async onConfirmSignUp() {
     try {
       const result = await this.auth.confirmSignUp(this.username, this.verificationCode);
-      const alert = await this.alertCtrl.create({
-        header: 'Éxito',
-        message: 'Registro confirmado correctamente.',
-        buttons: ['OK'],
-      });
-      await alert.present();
+
+      // Mostrar toast de éxito
+      await this.presentToast('Registro confirmado correctamente', 'success');
       console.log('Resultado:', result);
-      this.router.navigate(["/login"])
+
+      // Redirigir a la página de login
+      this.router.navigate(['/login']);
     } catch (error) {
-      const alert = await this.alertCtrl.create({
-        header: 'Error',
-        message: 'Ocurrió un error al confirmar el registro.',
-        buttons: ['OK'],
-      });
-      await alert.present();
+      // Mostrar toast de error
+      await this.presentToast('Ocurrió un error al confirmar el registro', 'danger');
       console.error('Error:', error);
     }
   }
 
+  // Método para mostrar el toast
+  async presentToast(message: string, color: string) {
+    const toast = await this.toastController.create({
+      message,
+      duration: 3000, // Duración en milisegundos
+      color,
+      position: 'top', // Posición del toast
+    });
+    await toast.present();
+  }
 }

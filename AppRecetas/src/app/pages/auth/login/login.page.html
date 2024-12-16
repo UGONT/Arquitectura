@@ -3,13 +3,24 @@
     <form class="register-form" (ngSubmit)="login()">
       <ion-item>
         <ion-label position="stacked">Correo Electrónico</ion-label>
-        <ion-input type="email" [(ngModel)]="email" name="email" placeholder="Ingresa tu correo" required></ion-input>
+        <ion-input 
+          type="email" 
+          [(ngModel)]="email" 
+          name="email" 
+          placeholder="Ingresa tu correo" 
+          required>
+        </ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label position="stacked">Contraseña</ion-label>
-        <ion-input type="password" [(ngModel)]="password" name="password" placeholder="Ingresa tu contraseña"
-          required></ion-input>
+        <ion-input 
+          type="password" 
+          [(ngModel)]="password" 
+          name="password" 
+          placeholder="Ingresa tu contraseña" 
+          required>
+        </ion-input>
       </ion-item>
 
       <div class="buttons">
