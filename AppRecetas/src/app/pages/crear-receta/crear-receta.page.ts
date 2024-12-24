@@ -65,7 +65,7 @@ export class CrearRecetaPage implements OnInit {
           this.presentToast('¡Receta creada exitosamente!', 'success');
 
           // Redirigir a la lista de recetas
-          this.router.navigate(['/recipe-list']);
+          this.router.navigate(['/tabs/misRecetas']);
         },
         (error) => {
           console.error('Error al crear receta:', error);

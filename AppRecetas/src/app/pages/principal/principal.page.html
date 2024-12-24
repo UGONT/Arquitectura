@@ -1,0 +1,22 @@
+
+
+<ion-content>
+  <div class="welcome-container">
+    <div class="welcome-message">
+      <h1>¡Bienvenido!</h1>
+      <p>Explora recetas deliciosas y encuentra inspiración para tu próxima comida.</p>
+    </div>
+
+    <div class="suggested-recipes">
+      <h2>Recetas que te pueden interesar</h2>
+      <div class="recipes-grid">
+        <ion-card *ngFor="let receta of recetas" class="recipe-card">
+          <img [src]="receta.strMealThumb" alt="{{ receta.strMeal }}" />
+          <ion-card-header>
+            <ion-card-title>{{ receta.strMeal }}</ion-card-title>
+          </ion-card-header>
+        </ion-card>
+      </div>
+    </div>
+  </div>
+</ion-content>

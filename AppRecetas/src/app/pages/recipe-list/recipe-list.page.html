@@ -1,11 +1,5 @@
-
-
 <ion-content>
-  <!-- Botón de recarga -->
-  <ion-button expand="block" color="tertiary" (click)="recargarRecetas()">
-    <ion-icon name="refresh" slot="start"></ion-icon>
-    Refrescar Recetas
-  </ion-button>
+
 
   <!-- Spinner para cuando no hay recetas -->
   <ion-spinner *ngIf="recetas.length === 0" color="primary"></ion-spinner>
@@ -27,6 +21,11 @@
 
   <!-- Botones de acciones -->
   <div class="action-buttons">
+    <!-- Botón de recarga -->
+    <ion-button expand="block" color="tertiary" (click)="recargarRecetas()">
+      <ion-icon name="refresh" slot="start"></ion-icon>
+      Refrescar Recetas
+    </ion-button>
     <ion-button expand="full" color="success" routerLink="/crear-receta">
       <ion-icon name="add" slot="start"></ion-icon> Agregar receta
     </ion-button>

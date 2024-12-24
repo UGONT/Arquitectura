@@ -66,7 +66,7 @@ export class UpdateRecipePage implements OnInit {
           this.presentToast('¡Receta actualizada exitosamente!', 'success');
 
           // Redirigir a la lista de recetas
-          this.router.navigate(['/recipe-list']);
+          this.router.navigate(['/tabs/misRecetas']);
         },
         (error) => {
           console.error('Error al actualizar receta:', error);

@@ -28,7 +28,7 @@ export class LoginPage implements OnInit {
       // Mostrar el toast de ingreso exitoso
       await this.presentToast('Ingreso exitoso', 'success');
 
-      this.router.navigate(['/recipe-list']);
+      this.router.navigate(['/tabs']);
       // Redirigir al usuario a otra página o guardar tokens en el almacenamiento local
     } catch (error) {
       console.error('Error al iniciar sesión:', error);

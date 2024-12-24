@@ -44,6 +44,26 @@ const routes: Routes = [
     loadChildren: () => import('./pages/delete-recipe/delete-recipe.module').then( m => m.DeleteRecipePageModule),
     canActivate: [AuthGuard]
   },
+  {
+    path: 'buscar-recetas-themealbd',
+    loadChildren: () => import('./pages/buscar-recetas-themealbd/buscar-recetas-themealbd.module').then( m => m.BuscarRecetasThemealbdPageModule),
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'tabs',
+    loadChildren: () => import('./pages/tabs/tabs.module').then( m => m.TabsPageModule),
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'perfil',
+    loadChildren: () => import('./pages/perfil/perfil.module').then( m => m.PerfilPageModule),
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'principal',
+    loadChildren: () => import('./pages/principal/principal.module').then( m => m.PrincipalPageModule),
+    canActivate : [AuthGuard]
+  },
 ];
 
 @NgModule({

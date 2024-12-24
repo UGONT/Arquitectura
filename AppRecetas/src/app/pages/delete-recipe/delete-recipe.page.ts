@@ -51,7 +51,7 @@ export class DeleteRecipePage implements OnInit {
           this.presentToast('¡Receta eliminada exitosamente!', 'success');
 
           // Redirigir a la lista de recetas
-          this.router.navigate(['/recipe-list']);
+          this.router.navigate(['/tabs/misRecetas']);
         },
         (error) => {
           console.error('Error al eliminar receta:', error);

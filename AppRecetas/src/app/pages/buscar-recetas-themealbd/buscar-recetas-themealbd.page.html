@@ -1,0 +1,34 @@
+<ion-content>
+  <div class="container">
+    <div class="search-bar">
+      <ion-item>
+        <ion-label>Categoría</ion-label>
+        <ion-select [(ngModel)]="selectedCategory" placeholder="Seleccionar categoría">
+          <ion-select-option *ngFor="let category of categories" [value]="category">
+            {{ categoriasTraducciones[category] || category }}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-button expand="block" color="primary" (click)="buscarRecetas()">Buscar</ion-button>
+    </div>
+
+    <div *ngIf="recetas.length > 0" class="recipes-list">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="6" *ngFor="let receta of recetas">
+            <ion-card class="recipe-card">
+              <img [src]="receta.strMealThumb" alt="{{ receta.strMeal }}" />
+              <ion-card-header>
+                <ion-card-title>{{ receta.strMeal }}</ion-card-title>
+              </ion-card-header>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+
+    <div *ngIf="!recetas.length && searched">
+      <ion-text color="medium">No se encontraron recetas para esta categoría.</ion-text>
+    </div>
+  </div>
+</ion-content>
